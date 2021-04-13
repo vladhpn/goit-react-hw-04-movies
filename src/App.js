@@ -1,7 +1,8 @@
 import { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, NavLink, Switch } from 'react-router-dom';
 import HomePage from './Views/HomePage';
 import MoviesPage from './Views/MoviesPage';
+import NotFound from './Views/NotFound';
 import 'modern-normalize/modern-normalize.css';
 
 class App extends Component {
@@ -10,14 +11,19 @@ class App extends Component {
       <>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <NavLink exact to="/">
+              Home
+            </NavLink>
           </li>
           <li>
-            <Link to="/movies">Movies</Link>
+            <NavLink to="/movies">Movies</NavLink>
           </li>
         </ul>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/movies" component={MoviesPage} />
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/movies" component={MoviesPage} />
+          <Route component={NotFound} />
+        </Switch>
       </>
     );
   }
