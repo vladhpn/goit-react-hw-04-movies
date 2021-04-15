@@ -13,6 +13,7 @@ class SearchForm extends Component{
     event.preventDefault();
 
     this.props.onSubmit(this.state.query)
+    this.setState({query: ''})
     
   }
 
@@ -20,7 +21,7 @@ class SearchForm extends Component{
       const {query} = this.state;
 
         return(     <header >
-            <form>
+            <form onSubmit={this.handleSubmit}>
               <button type="submit">
               <span>Search</span>
               </button>

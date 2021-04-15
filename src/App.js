@@ -1,29 +1,22 @@
 import { Component } from 'react';
-import { Route, NavLink, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import HomePage from './Views/HomePage';
 import MoviesPage from './Views/MoviesPage';
 import MoviesDetailsPage from './Views/MoviesDetailsPage';
 import NotFound from './Views/NotFound';
+import AppBar from './Components/AppBar';
+import routes from './routes';
 import 'modern-normalize/modern-normalize.css';
 
 class App extends Component {
   render() {
     return (
       <>
-        <ul>
-          <li>
-            <NavLink exact to="/">
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/movies">Movies</NavLink>
-          </li>
-        </ul>
+        <AppBar />
         <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/movies" component={MoviesPage} />
-          <Route path="/movies/:moviesId" component={MoviesDetailsPage} />
+          <Route exact path={routes.home} component={HomePage} />
+          <Route exact path={routes.movies} component={MoviesPage} />
+          <Route path={routes.moviesDetails} component={MoviesDetailsPage} />
           <Route component={NotFound} />
         </Switch>
       </>

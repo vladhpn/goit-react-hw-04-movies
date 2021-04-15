@@ -1,6 +1,7 @@
 import { Component } from 'react';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
 import SearchForm from '../../Components/SearchForm'
+import {fetchByQuery, imageUrl} from '../../Services/ApiService'
 
 
 
@@ -9,22 +10,17 @@ class MoviesPage extends Component{
     state = {
         movies: [],
     }
-    
-    componentDidMount(){
-        const apiKey = '98e87da0e762537a8cb63c18dd13caee';
-        axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=batman`)
-        .then(response => this.setState({movies:response.data.results}))
-    }
-    fetchMovies = () => {
-       
-    }
+
 
     onChangeQuery = query => {
-       
+
+        fetchByQuery(query).then(movies => this.setState({movies})).catch(error => console.log(error))
+
     }
     render(){
 
         const {movies} = this.state;
+        // const { url } = this.props.match;
 
         return(<>
          <h1>Movies search</h1>
@@ -32,7 +28,13 @@ class MoviesPage extends Component{
         <SearchForm  onSubmit={this.onChangeQuery}/>
 
       <div>
-          <ul>{movies.map(({original_title, id}) => <li key={id}> <span>{original_title}</span>
+          <ul>{movies.map(({original_title, id, poster_path, title}) => <li key={id}>  
+              <Link to={`/movies/${id}`}><h3>{original_title}</h3>
+              <img
+                src={imageUrl + poster_path}
+                className="ImageGalleryItem-image"
+                alt={title}
+              /></Link>
          
            </li>)}</ul>
       </div>
@@ -42,6 +44,6 @@ class MoviesPage extends Component{
     }
 }
 
-{/* <img src={result.poster_path} /> */}
+
 
 export default MoviesPage;
