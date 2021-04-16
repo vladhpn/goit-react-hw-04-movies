@@ -1,8 +1,8 @@
 import { Component } from 'react';
-// import { Link } from 'react-router-dom';
 import SearchForm from '../../Components/SearchForm'
 import {fetchByQuery} from '../../Services/ApiService'
-import MoviesPageList from '../../Components/MoviesPageList';
+import MoviesTrendList from '../../Components/MoviesTrendList'
+import styles from './styles.module.scss'
 
 
 class MoviesPage extends Component{
@@ -17,10 +17,12 @@ class MoviesPage extends Component{
     }
     render(){
         const {movies} = this.state;
-        // const { url } = this.props.match;
         return(<>
+        <div className={styles.container}>
         <SearchForm  onSubmit={this.onChangeQuery}/>
-        <MoviesPageList movies={movies}/>
+
+        <MoviesTrendList movies={movies}/>
+        </div>
          </>
         )
     }

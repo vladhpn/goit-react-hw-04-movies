@@ -1,4 +1,5 @@
 import { Component } from "react";
+import styles from './styles.module.scss'
 
 
 class SearchForm extends Component{
@@ -22,16 +23,17 @@ class SearchForm extends Component{
 
         return( 
           <>
-          <h2>Movies search</h2>
-          <div>
-            <form onSubmit={this.handleSubmit}>
-              <button type="submit">
-              <span>Search</span>
+          <h1 className={styles.title}>Movies search</h1>
+          <div className={styles.Searchbar}>
+            <form onSubmit={this.handleSubmit} className={styles.SearchForm}>
+              <button type="submit"  className={styles.SearchButton}>
+              <span className={styles.SearchFormLabel}>Search</span>
               </button>
           
               <input
                 value={query}
                 onChange={this.handleChange}
+                className={styles.SearchFormInput}
                 type="text"
                 autoComplete="off"
                 autoFocus

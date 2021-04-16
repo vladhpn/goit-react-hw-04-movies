@@ -1,5 +1,6 @@
 import { Component } from "react";
 import {fetchMovieCast} from '../../Services/ApiService'
+import styles from './styles.module.scss'
 
 
 class Cast extends Component{
@@ -16,14 +17,15 @@ class Cast extends Component{
     render(){
         const {casts} = this.state;
         const baseUrl = 'https://image.tmdb.org/t/p/w200'
-        return(<><h1>CAST</h1>
-        <ul>{casts.map(({ name, id, profile_path }) => <li key={id}>
+        return(<><h4 className={styles.title}>CAST</h4>
+        <ul className={styles.list}>{casts.map(({ name, id, profile_path }) => 
+        <li key={id} className={styles.item}>
         <img
                 src={baseUrl + profile_path}
-                className="ImageGalleryItem-image"
+                className={styles.img}
                 alt={name}
               />
-            <p>{name}</p></li>)}</ul>
+            <p className={styles.name}>{name}</p></li>)}</ul>
         </>)
     }
 }

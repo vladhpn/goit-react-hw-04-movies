@@ -1,6 +1,7 @@
 import { Component } from "react";
 import Review from '../Review';
 import {fetchMovieReviews} from '../../Services/ApiService'
+import styles from './styles.module.scss';
 
 
 class Reviews extends Component{
@@ -18,8 +19,8 @@ class Reviews extends Component{
         const {reviews} = this.state;
 
         return(<>
-        <h2>Reviews</h2>
-        <ul>{reviews.map(({author, id, content}) => <li key={id}> 
+        <h3 className={styles.title}>Reviews</h3>
+        <ul className={styles.list}>{reviews.map(({author, id, content}) => <li key={id}> 
             <Review author={author} content={content}/>
         </li>)}</ul>
         </>)

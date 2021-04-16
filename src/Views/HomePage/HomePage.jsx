@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import {fetchPopularMovies} from '../../Services/ApiService'
 import MoviesTrendList from '../../Components/MoviesTrendList'
+import styles from './styles.module.scss'
 
 class HomePage extends Component{
 
@@ -18,9 +19,10 @@ class HomePage extends Component{
        
         return(
             <>
-            <h1>Trending Today</h1>
+            <h1 className={styles.title} >Trending Today</h1>
             <MoviesTrendList movies={movies}/>
             </>
+            
         )
     }
 }

@@ -1,0 +1,30 @@
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.title {
+  text-align: center;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.item {
+  margin-right: 10px;
+}
+
+.movie_title {
+  text-align: center;
+}
+
+.link {
+  text-decoration: none;
+  color: #2196f3;
+}
