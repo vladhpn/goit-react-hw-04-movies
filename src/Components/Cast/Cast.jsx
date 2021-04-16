@@ -1,5 +1,6 @@
 import { Component } from "react";
-import axios from 'axios';
+import {fetchMovieCast} from '../../Services/ApiService'
+
 
 class Cast extends Component{
     state ={
@@ -7,9 +8,9 @@ class Cast extends Component{
     }
 
     componentDidMount(){
-        const apiKey = '98e87da0e762537a8cb63c18dd13caee';
-        axios.get(`https://api.themoviedb.org/3/movie/${this.props.movieId}/credits?api_key=${apiKey}`)
-        .then(response => this.setState({casts: response.data.cast}))
+        const {movieId} = this.props
+        fetchMovieCast(movieId).then(casts => this.setState({casts}))
+        .catch(error => console.log(error))
     }
 
     render(){

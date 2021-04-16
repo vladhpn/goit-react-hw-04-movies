@@ -1,6 +1,6 @@
 import { Component } from "react";
 import Review from '../Review';
-import axios from 'axios'
+import {fetchMovieReviews} from '../../Services/ApiService'
 
 
 class Reviews extends Component{
@@ -9,10 +9,9 @@ class Reviews extends Component{
     }
 
     componentDidMount(){
-        
-        const apiKey = '98e87da0e762537a8cb63c18dd13caee';
-        axios.get(`https://api.themoviedb.org/3/movie/${this.props.movieId}/reviews?api_key=${apiKey}`)
-        .then(response => this.setState({reviews: response.data.results}))
+        const {movieId} = this.props
+        fetchMovieReviews(movieId).then(reviews => this.setState({reviews}))
+        .catch(error => console.log(error))
     }
 
     render(){
@@ -21,7 +20,7 @@ class Reviews extends Component{
         return(<>
         <h2>Reviews</h2>
         <ul>{reviews.map(({author, id, content}) => <li key={id}> 
-        <Review author={author} content={content}/>
+            <Review author={author} content={content}/>
         </li>)}</ul>
         </>)
     }

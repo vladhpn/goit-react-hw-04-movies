@@ -17,4 +17,14 @@ const fetchMovieDetails =(moviesId) => {
         .then(response => response.data)
 }
 
-export  { fetchPopularMovies, fetchByQuery, fetchMovieDetails, imageUrl};
+const fetchMovieReviews = (movieId) => {
+        return axios.get(`https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${apiKey}`)
+        .then(response => response.data.results)
+}
+
+const fetchMovieCast = (movieId) => {
+        return   axios.get(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`)
+        .then(response => response.data.cast)
+}
+
+export  { fetchPopularMovies, fetchByQuery, fetchMovieDetails, fetchMovieReviews, fetchMovieCast, imageUrl};

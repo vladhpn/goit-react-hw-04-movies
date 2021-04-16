@@ -20,7 +20,10 @@ class SearchForm extends Component{
     render() {
       const {query} = this.state;
 
-        return(     <header >
+        return( 
+          <>
+          <h2>Movies search</h2>
+          <div>
             <form onSubmit={this.handleSubmit}>
               <button type="submit">
               <span>Search</span>
@@ -35,7 +38,9 @@ class SearchForm extends Component{
                 placeholder="Search movies"
               />
             </form>
-          </header>)
+            </div>
+             </>
+          )
     }
 }
 export default SearchForm;
