@@ -18,9 +18,10 @@ const MoviesTrendList = ({movies, location}) => {
             
             {poster_path ? (<img
             src={imageUrl + poster_path}
-            className="ImageGalleryItem-image"
+            
             alt={title}
           />) : (<img src={image}
+            className={styles.img}
           alt='' />)}
             <h3 className={styles.movie_title}>{title}</h3>
             </Link>
