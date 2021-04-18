@@ -1,4 +1,5 @@
 import { Link, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import {imageUrl} from '../../Services/ApiService';
 import image from '../../images/no-image.jpeg'
 import styles from './styles.module.scss';
@@ -26,6 +27,10 @@ const MoviesTrendList = ({movies, location}) => {
             <h3 className={styles.movie_title}>{title}</h3>
             </Link>
      </li>)}</ul>}</div> )
+}
+
+MoviesTrendList.propTypes = {
+  movies: PropTypes.array.isRequired
 }
 
 export default withRouter(MoviesTrendList);
