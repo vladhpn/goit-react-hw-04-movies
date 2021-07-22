@@ -27,4 +27,9 @@ const fetchMovieCast = (movieId) => {
         .then(response => response.data.cast)
 }
 
-export  { fetchPopularMovies, fetchByQuery, fetchMovieDetails, fetchMovieReviews, fetchMovieCast, imageUrl};
+const fetchMovieTrailer = (movieId) => {
+        return   axios.get(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}`)
+        .then(response => response.data.results)
+}
+
+export  { fetchPopularMovies, fetchByQuery, fetchMovieDetails, fetchMovieReviews, fetchMovieCast, imageUrl, fetchMovieTrailer};

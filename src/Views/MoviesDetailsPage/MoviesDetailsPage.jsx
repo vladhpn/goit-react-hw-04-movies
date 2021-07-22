@@ -7,6 +7,7 @@ import {fetchMovieDetails} from '../../Services/ApiService'
 import routes from '../../routes'
 import styles from './styles.module.scss'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import Video from '../../Components/Video/Video'
 
 class MoviesDetailsPage extends Component{
 
@@ -38,15 +39,14 @@ class MoviesDetailsPage extends Component{
     
       return(<>
             <div className={styles.container}> 
-          
-         
             <ArrowBackIcon onClick={this.handleGoBack} /> 
 
-          <MovieDescription movies={movies}/>
+            <MovieDescription movies={movies}/>
              
     
                 <Link to={`${match.url}/cast`} className={styles.link}> Cast </Link>
                 <Link to={`${match.url}/reviews`} className={styles.link}> Rewiews </Link>
+                <Link to={`${match.url}/trailer`} className={styles.link}> Trailer </Link>
            
 
           <Route
@@ -57,6 +57,10 @@ class MoviesDetailsPage extends Component{
           <Route
             path={`${path}/reviews`}
             render={props => (<Reviews {...props} movieId={moviesId}/>)}
+        />
+        <Route
+            path={`${path}/trailer`}
+            render={props => (<Video {...props} movieId={moviesId}/>)}
         />
            </div>
             </>)
