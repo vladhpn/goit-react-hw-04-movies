@@ -7,7 +7,7 @@ import {fetchMovieDetails} from '../../Services/ApiService'
 import routes from '../../routes'
 import styles from './styles.module.scss'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import Video from '../../Components/Video/Video'
+// import Video from '../../Components/Video/Video'
 
 class MoviesDetailsPage extends Component{
 
@@ -46,7 +46,7 @@ class MoviesDetailsPage extends Component{
     
                 <Link to={`${match.url}/cast`} className={styles.link}> Cast </Link>
                 <Link to={`${match.url}/reviews`} className={styles.link}> Rewiews </Link>
-                <Link to={`${match.url}/trailer`} className={styles.link}> Trailer </Link>
+                {/* <Link to={`${match.url}/trailer`} className={styles.link}> Trailer </Link> */}
            
 
           <Route
@@ -58,10 +58,10 @@ class MoviesDetailsPage extends Component{
             path={`${path}/reviews`}
             render={props => (<Reviews {...props} movieId={moviesId}/>)}
         />
-        <Route
+        {/* <Route
             path={`${path}/trailer`}
             render={props => (<Video {...props} movieId={moviesId}/>)}
-        />
+        /> */}
            </div>
             </>)
         }
